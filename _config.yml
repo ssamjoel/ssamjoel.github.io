@@ -21,7 +21,9 @@
 title: Sam::CppLog
 email: ssamjoel15@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  all about video games, game engines, cpp & my amateur opinions...
+  Sam is a QA Engineer & an avid Gamer. Currently is learning C++ 
+  so I can switch to development side. This blog is all about video games, game engines, 
+  cpp & my amateur opinions...
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: ig_ToxXxic
 github_username:  ssamjoel
