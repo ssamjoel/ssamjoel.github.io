@@ -11,7 +11,7 @@ You are given two non-empty linked lists representing two non-negative integers.
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 
 Solution
-'''
+{% highlight ruby %}
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -33,12 +33,10 @@ public class Solution {
             int y = (q != null) ? q.val : 0;
             int sum = carry + x + y;
             carry = sum / 10;
-
             curr.next = new ListNode(sum%10);
             curr = curr.next;
             if (p != null) p = p.next;
             if (q != null) q = q.next;
-
         } 
         if (carry > 0){
             curr.next = new ListNode(carry);
@@ -46,7 +44,7 @@ public class Solution {
         return Result.next;    
     }
 }
-'''
+{% endhighlight %}
 
 Explaination
 
