@@ -77,7 +77,7 @@ dash:
 
   # (optional) discqus comment configuration
   disqus:
-    shortname: <your-disqus-shortname>  
+    shortname: ssamjoel  
 
   # the animation speed of the post scroll-in effect
   animation_speed: 50
