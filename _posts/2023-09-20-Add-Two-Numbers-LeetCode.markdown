@@ -47,66 +47,62 @@ public class Solution {
 {% endhighlight %}
 
 Explaination
-
 To solve this problem, we need to understand what a Linked List is.
 A linked list is a linear data structure, in which the elements are stored in the form of a node. Each node contains two sub-elements. A data part that stores the value of the element and next part that stores the link to the next node
 
 Constructor to Create a LinkedList would be : 
-'''
+{% highlight ruby %}
 public ListNode(int val=0, ListNode next=null) {
  *         this.val = val;
  *         this.next = next;
  *     }
-'''
+{% endhighlight %}
 That simply means each value has the pointer for the next value in the list.
-
 Taking this into consideration, we do have two Linked List as input that is in reversed order and we need to find the sum of the Linked List.
 
 Example:
 l1 = [2, 4, 3]
 l2 = [5, 6, 4]
 sum= [7, 0, 4]
-
 Now Consider The First element of l1 i.e l1.val = 2, l2.val=5 and sum would be l1.val + l2.val. Now loop this until both the list runs out of elements.
 
 Breakdown:
-'''
+{% highlight ruby %}
 ListNode Result = new ListNode(0);
 ListNode p = l1, q = l2, curr = Result;
 int carry = 0;
-'''
+{% endhighlight %}
 Result is a dummy node that serves as the head of the result linked list. It's initialized with a value of 0.
 p and q are pointers initialized to the heads of the input linked lists l1 and l2, respectively.
 curr is a pointer initially set to Result. It will be used to traverse and build the result linked list.
 carry is initialized to 0. It keeps track of any carry generated during addition.
 
-'''
+{% highlight ruby %}
 while (p != null || q != null) {
-'''
+{% endhighlight %}
 This while loop continues as long as either p or q is not null. It iterates through the linked lists, processing each digit.
 
-'''
+{% highlight ruby %}
 int x = (p != null) ? p.val : 0;
 int y = (q != null) ? q.val : 0;
 int sum = carry + x + y;
 carry = sum / 10;
-'''
+{% endhighlight %}
 x and y store the values of the current nodes p and q, respectively. If p or q is null, their value is considered as 0.
 sum holds the sum of the current digits, plus any carry from the previous step.
 carry is updated to hold the carry for the next iteration, which is calculated as the integer division of sum by 10.
 
-'''
+{% highlight ruby %}
 curr.next = new ListNode(sum % 10);
 curr = curr.next;
 if (p != null) p = p.next;
 if (q != null) q = q.next;
-'''
-
+{% endhighlight %}
 p and q pointers are moved to their respective next nodes if they are not null, effectively advancing through the input linked lists.
 The loop continues processing each digit in the input linked lists until both p and q become null.
 
 
-'''
+{% highlight ruby %}
 return Result.next;
-'''
+{% endhighlight %}
 Finally, the method returns Result.next, which is the head of the result linked list. 
