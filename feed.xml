@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://ssamjoel.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ssamjoel.github.io/" rel="alternate" type="text/html" /><updated>2023-09-20T12:02:28+00:00</updated><id>https://ssamjoel.github.io/feed.xml</id><title type="html">Sam::CppLog</title><subtitle>Sam is a QA Engineer &amp; an avid Gamer. Currently is learning C++  so I can switch to development side. This blog is all about video games, game engines,  cpp &amp; my amateur opinions...</subtitle><entry><title type="html">Add Two Numbers! - LeetCode Solution - Explained!</title><link href="https://ssamjoel.github.io/leetcode/2023/09/19/Add-Two-Numbers-LeetCode.html" rel="alternate" type="text/html" title="Add Two Numbers! - LeetCode Solution - Explained!" /><published>2023-09-19T21:08:26+00:00</published><updated>2023-09-19T21:08:26+00:00</updated><id>https://ssamjoel.github.io/leetcode/2023/09/19/Add-Two-Numbers-LeetCode</id><content type="html" xml:base="https://ssamjoel.github.io/leetcode/2023/09/19/Add-Two-Numbers-LeetCode.html"><![CDATA[<p>Question:
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+
+<p>Solution</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int val=0, ListNode next=null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */</span>
+<span class="kp">public</span> <span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+    <span class="kp">public</span> <span class="no">ListNode</span> <span class="no">AddTwoNumbers</span><span class="p">(</span><span class="no">ListNode</span> <span class="n">l1</span><span class="p">,</span> <span class="no">ListNode</span> <span class="n">l2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="no">ListNode</span> <span class="no">Result</span> <span class="o">=</span> <span class="n">new</span> <span class="no">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="no">ListNode</span> <span class="nb">p</span> <span class="o">=</span> <span class="n">l1</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">l2</span><span class="p">,</span> <span class="n">curr</span> <span class="o">=</span> <span class="no">Result</span><span class="p">;</span>
+        <span class="n">int</span> <span class="n">carry</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nb">p</span> <span class="o">!=</span> <span class="n">null</span> <span class="o">||</span> <span class="n">q</span> <span class="o">!=</span> <span class="n">null</span><span class="p">){</span>
+            <span class="n">int</span> <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="nb">p</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">?</span> <span class="nb">p</span><span class="p">.</span><span class="nf">val</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="n">int</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">?</span> <span class="n">q</span><span class="p">.</span><span class="nf">val</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="n">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">carry</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+            <span class="n">carry</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
+            <span class="n">curr</span><span class="p">.</span><span class="nf">next</span> <span class="o">=</span> <span class="n">new</span> <span class="no">ListNode</span><span class="p">(</span><span class="n">sum</span><span class="o">%</span><span class="mi">10</span><span class="p">);</span>
+            <span class="n">curr</span> <span class="o">=</span> <span class="n">curr</span><span class="p">.</span><span class="nf">next</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">p</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="nb">p</span> <span class="o">=</span> <span class="nb">p</span><span class="p">.</span><span class="nf">next</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">q</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="nf">next</span><span class="p">;</span>
+        <span class="p">}</span> 
+        <span class="k">if</span> <span class="p">(</span><span class="n">carry</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">curr</span><span class="p">.</span><span class="nf">next</span> <span class="o">=</span> <span class="n">new</span> <span class="no">ListNode</span><span class="p">(</span><span class="n">carry</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="no">Result</span><span class="p">.</span><span class="nf">next</span><span class="p">;</span>    
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Explaination
+To solve this problem, we need to understand what a Linked List is.
+A linked list is a linear data structure, in which the elements are stored in the form of a node. Each node contains two sub-elements. A data part that stores the value of the element and next part that stores the link to the next node</p>
+
+<p>Constructor to Create a LinkedList would be :</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="kp">public</span> <span class="no">ListNode</span><span class="p">(</span><span class="n">int</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="no">ListNode</span> <span class="k">next</span><span class="o">=</span><span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+ <span class="o">*</span>         <span class="n">this</span><span class="p">.</span><span class="nf">val</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+ <span class="o">*</span>         <span class="n">this</span><span class="p">.</span><span class="nf">next</span> <span class="o">=</span> <span class="k">next</span><span class="p">;</span>
+ <span class="o">*</span>     <span class="p">}</span></code></pre></figure>
+
+<p>That simply means each value has the pointer for the next value in the list.
+Taking this into consideration, we do have two Linked List as input that is in reversed order and we need to find the sum of the Linked List.</p>
+
+<p>Example:
+l1 = [2, 4, 3]
+l2 = [5, 6, 4]
+sum= [7, 0, 4]
+Now Consider The First element of l1 i.e l1.val = 2, l2.val=5 and sum would be l1.val + l2.val. Now loop this until both the list runs out of elements.</p>
+
+<p>Breakdown:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">ListNode</span> <span class="no">Result</span> <span class="o">=</span> <span class="n">new</span> <span class="no">ListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="no">ListNode</span> <span class="nb">p</span> <span class="o">=</span> <span class="n">l1</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">l2</span><span class="p">,</span> <span class="n">curr</span> <span class="o">=</span> <span class="no">Result</span><span class="p">;</span>
+<span class="n">int</span> <span class="n">carry</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span></code></pre></figure>
+
+<p>Result is a dummy node that serves as the head of the result linked list. It’s initialized with a value of 0.
+p and q are pointers initialized to the heads of the input linked lists l1 and l2, respectively.
+curr is a pointer initially set to Result. It will be used to traverse and build the result linked list.
+carry is initialized to 0. It keeps track of any carry generated during addition.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">while</span> <span class="p">(</span><span class="nb">p</span> <span class="o">!=</span> <span class="n">null</span> <span class="o">||</span> <span class="n">q</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span></code></pre></figure>
+
+<p>This while loop continues as long as either p or q is not null. It iterates through the linked lists, processing each digit.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">int</span> <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="nb">p</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">?</span> <span class="nb">p</span><span class="p">.</span><span class="nf">val</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">int</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">?</span> <span class="n">q</span><span class="p">.</span><span class="nf">val</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">carry</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+<span class="n">carry</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span></code></pre></figure>
+
+<p>x and y store the values of the current nodes p and q, respectively. If p or q is null, their value is considered as 0.
+sum holds the sum of the current digits, plus any carry from the previous step.
+carry is updated to hold the carry for the next iteration, which is calculated as the integer division of sum by 10.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">curr</span><span class="p">.</span><span class="nf">next</span> <span class="o">=</span> <span class="n">new</span> <span class="no">ListNode</span><span class="p">(</span><span class="n">sum</span> <span class="o">%</span> <span class="mi">10</span><span class="p">);</span>
+<span class="n">curr</span> <span class="o">=</span> <span class="n">curr</span><span class="p">.</span><span class="nf">next</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">p</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="nb">p</span> <span class="o">=</span> <span class="nb">p</span><span class="p">.</span><span class="nf">next</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">q</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="nf">next</span><span class="p">;</span></code></pre></figure>
+
+<p>p and q pointers are moved to their respective next nodes if they are not null, effectively advancing through the input linked lists.
+The loop continues processing each digit in the input linked lists until both p and q become null.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">return</span> <span class="no">Result</span><span class="p">.</span><span class="nf">next</span><span class="p">;</span></code></pre></figure>
+
+<p>Finally, the method returns Result.next, which is the head of the result linked list.</p>]]></content><author><name></name></author><category term="LeetCode" /><category term="LeetCode," /><category term="C#," /><category term="LinkedList," /><category term="Solution" /><summary type="html"><![CDATA[Question: You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list. You may assume the two numbers do not contain any leading zero, except the number 0 itself.]]></summary></entry><entry><title type="html">Welcome to My Page!</title><link href="https://ssamjoel.github.io/update/2023/09/18/welcome-to-my-page.html" rel="alternate" type="text/html" title="Welcome to My Page!" /><published>2023-09-18T16:06:26+00:00</published><updated>2023-09-18T16:06:26+00:00</updated><id>https://ssamjoel.github.io/update/2023/09/18/welcome-to-my-page</id><content type="html" xml:base="https://ssamjoel.github.io/update/2023/09/18/welcome-to-my-page.html"><![CDATA[<p>Hello, this is Sam. I am a QA Engineer with 4 years of experience who hopes to eventually transition to coding. That’s where the github page and DevLog come into play. I am currently working in the gaming industry and would like to continue doing so, as the only way to stay in the industry is to constantly improve your skills.</p>
+
+<p>I began learning C# about 6 months ago and later added C++. This page primarily contains learning notes, my leetcode solution, and discussions about Game Engines and Technologies. Please excuse my broken English. Sometimes I might go wrong or my explaination might be bad. Please feel free to correct me in those instances.</p>
+
+<p>I hope to be able to assist you all in some way. Happy Studying!!</p>]]></content><author><name></name></author><category term="Update" /><category term="Experiences" /><summary type="html"><![CDATA[Hello, this is Sam. I am a QA Engineer with 4 years of experience who hopes to eventually transition to coding. That’s where the github page and DevLog come into play. I am currently working in the gaming industry and would like to continue doing so, as the only way to stay in the industry is to constantly improve your skills.]]></summary></entry></feed>
